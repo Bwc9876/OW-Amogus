@@ -1,9 +1,9 @@
 ﻿using OWML.Common;
 using OWML.ModHelper;
 
-namespace ModTemplate
+namespace Amogus
 {
-    public class ModTemplate : ModBehaviour
+    public class Amogus : ModBehaviour
     {
         private void Awake()
         {
@@ -15,7 +15,7 @@ namespace ModTemplate
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
-            ModHelper.Console.WriteLine($"My mod {nameof(ModTemplate)} is loaded!", MessageType.Success);
+            ModHelper.Console.WriteLine($"My mod {nameof(Amogus)} is loaded!", MessageType.Success);
 
             // Example of accessing game code.
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
