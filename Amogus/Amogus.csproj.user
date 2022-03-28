@@ -1,5 +1,6 @@
 ﻿<Project>
   <PropertyGroup>
+    <OuterWildsModsDirectory>$(AppData)\OuterWildsModManager\OWML\Mods</OuterWildsModsDirectory>
     <OutputPath>$(AppData)\OuterWildsModManager\OWML\Mods\Bwc9876.Amogus</OutputPath>
   </PropertyGroup>
 </Project>

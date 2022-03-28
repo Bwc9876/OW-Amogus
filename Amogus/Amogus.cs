@@ -1,30 +1,29 @@
-﻿using OWML.Common;
+﻿using System;
+using OWML.Common;
 using OWML.ModHelper;
+using QSB;
+using QSB.Menus;
 
 namespace Amogus
 {
     public class Amogus : ModBehaviour
     {
+        public static Amogus Instance;
+
         private void Awake()
         {
-            // You won't be able to access OWML's mod helper in Awake.
-            // So you probably don't want to do anything here.
-            // Use Start() instead.
+            Instance = this;
         }
 
         private void Start()
         {
-            // Starting here, you'll have access to OWML's mod helper.
-            ModHelper.Console.WriteLine($"My mod {nameof(Amogus)} is loaded!", MessageType.Success);
+            Instance.ModHelper.Console.WriteLine("Start of Amogus!");
+            ModHelper.HarmonyHelper.AddPrefix<QSBCore>("Configure", typeof(Amogus), nameof(Amogus.Rekt));
+        }
 
-            // Example of accessing game code.
-            LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>
-            {
-                if (loadScene != OWScene.SolarSystem) return;
-                var playerBody = FindObjectOfType<PlayerBody>();
-                ModHelper.Console.WriteLine($"Found player body, and it's called {playerBody.name}!",
-                    MessageType.Success);
-            };
+        public static void Rekt()
+        {
+            Instance.ModHelper.Console.WriteLine("GET PATCHED BOZO");
         }
     }
 }
