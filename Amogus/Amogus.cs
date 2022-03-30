@@ -1,29 +1,24 @@
-﻿using System;
-using OWML.Common;
+﻿using Amogus.Utilities.ModAPIs;
 using OWML.ModHelper;
-using QSB;
-using QSB.Menus;
 
-namespace Amogus
+namespace Amogus;
+
+public class Amogus : ModBehaviour
 {
-    public class Amogus : ModBehaviour
+    public static Amogus Instance;
+
+    private void Awake()
     {
-        public static Amogus Instance;
+        Instance = this;
+    }
 
-        private void Awake()
-        {
-            Instance = this;
-        }
-
-        private void Start()
-        {
-            Instance.ModHelper.Console.WriteLine("Start of Amogus!");
-            ModHelper.HarmonyHelper.AddPrefix<QSBCore>("Configure", typeof(Amogus), nameof(Amogus.Rekt));
-        }
-
-        public static void Rekt()
-        {
-            Instance.ModHelper.Console.WriteLine("GET PATCHED BOZO");
-        }
+    private void Start()
+    {
+        Patches.Patch();
+        INewHorizons newHorizonsAPI = ModHelper.Interaction.GetModApi<INewHorizons>("xen.NewHorizons");
+        IQuantumSpaceBuddies quantumSpaceBuddiesAPI = ModHelper.Interaction.GetModApi<IQuantumSpaceBuddies>("Raicuparta.QuantumSpaceBuddies");
+        quantumSpaceBuddiesAPI.RegisterAddon(this);
+        newHorizonsAPI.LoadConfigs(this);
+        Instance.ModHelper.Console.WriteLine("Start of Amogus!");
     }
 }

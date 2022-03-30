@@ -1,0 +1,43 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+  "name": "Lobby",
+  "Base": {
+    "isSatellite": true,
+    "surfaceSize": 1000,
+    "groundSize": 1,
+    "sphereOfInfluence": 10000,
+    "surfaceGravity": 12
+  },
+  "Orbit": {
+    "primaryBody": "AmogusSol",
+    "isStatic": true,
+    "semiMajorAxis": 5000
+  },
+  "Props": {
+    "details": [
+      {
+        "assetBundle": "assetbundle/amogus",
+        "path": "Assets/Prefabs/Da-Lobby.prefab",
+        "position": {
+          "x": 0,
+          "y": 1000,
+          "z": 0
+        },
+        "alignToNormal": true,
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ]
+  },
+  "Spawn": {
+    "playerSpawnPoint": {
+      "x": 0,
+      "y": 1000,
+      "z": 0
+    },
+    "startWithSuit": true
+  }
+}

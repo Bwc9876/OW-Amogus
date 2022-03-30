@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/xen-42/outer-wilds-new-horizons/master/NewHorizons/schema.json",
+  "name": "AmogusSol",
+  "Base": {
+    "surfaceGravity" : 100,
+    "surfaceSize" : 100,
+    "hasMapMarker" : false,
+    "gravityFallOff" : "inverseSquared",
+    "centerOfSolarSystem": true
+  },
+  "Orbit": {
+    "isStatic": true
+  },
+  "Star": {
+    "size": 1000,
+    "tint": {
+      "R": 255,
+      "G": 255,
+      "B": 255,
+      "A": 255
+    },
+    "solarLuminosity": 1
+  }
+}
