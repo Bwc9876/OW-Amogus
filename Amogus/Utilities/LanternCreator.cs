@@ -17,9 +17,7 @@ public static class LanternCreator
         Locator.GetAstroObject(AstroObject.Name.RingWorld).gameObject.SetActive(true);
         
         GameObject sourceLantern = GameObject.Find("RingWorld_Body/Sector_RingInterior/Sector_Zone1/Sector_ArtifactHouse_Zone1/Interactibles_ArtifactHouse_Zone1/Prefab_IP_DreamLanternItem_2 (1)");
-        
-        Amogus.Instance.ModHelper.Console.WriteLine($"We found {Object.FindObjectsOfType<LanternSpawnPoint>().Length} lantern spawns!");
-        
+                
         foreach (LanternSpawnPoint spawnPoint in Object.FindObjectsOfType<LanternSpawnPoint>())
         {
             GameObject newLantern = GetLantern(sourceLantern, spawnPoint.transform, parentSector);
@@ -28,7 +26,6 @@ public static class LanternCreator
             {
                 CustomizeLantern(newLantern, spawnPoint.flameColor * spawnPoint.amplifyFlameColor, spawnPoint.ambientColor);
             });
-            Amogus.Instance.ModHelper.Console.WriteLine($"New Lantern! {newLantern.transform.position}");
             Object.Destroy(spawnPoint.gameObject);
         }
         
