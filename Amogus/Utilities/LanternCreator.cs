@@ -8,6 +8,9 @@ namespace Amogus;
 
 public static class LanternCreator
 {
+    private static readonly int LanternFlameColorID = Shader.PropertyToID("_Color");
+    private static readonly int MainLanternFlameTexID = Shader.PropertyToID("_MainTex");
+
     public static void SpawnAllLanterns(Sector parentSector)
     {
         // Enable the ringworld so we can yoink the artifacts
@@ -46,13 +49,14 @@ public static class LanternCreator
         };
         foreach (OWRenderer flameRenderer in renderers)
         {
-            flameRenderer._renderer.material.SetTexture("_MainTex", effectImage);
-            flameRenderer._renderer.material.SetColor("_Color", flameColor);
+            flameRenderer._renderer.material.SetTexture(MainLanternFlameTexID, effectImage);
+            flameRenderer._renderer.material.SetColor(LanternFlameColorID, flameColor);
         }
     }
 
     public static GameObject GetLantern(GameObject sourceLantern, Transform transform, Sector parentSector)
     {
+        // TODO: Uh the conceal cover things don't work
         sourceLantern.GetComponent<DreamLanternController>().enabled = true;
         sourceLantern.GetComponent<DreamLanternItem>().enabled = true;
         GameObject newLanternGO = GameObject.Instantiate(sourceLantern, transform.parent);
