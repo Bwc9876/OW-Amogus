@@ -21,12 +21,16 @@ public static class Patches
 
     public static bool SingleLightSensorIsIlluminatedByGhostLantern(ref bool __result)
     {
+        // This throws a bunch of errors if it returns true so we just return false since this mod never uses ghosts
+
         __result = false;
         return false;
     }
 
     public static bool GetAttachedOWRigidBody(this GameObject __0, bool __1, ref OWRigidbody __result)
     {
+        // Basically a copy & paste of the original method except there's no activeInHierarchy check
+
         OWRigidbody owrigidbody = null;
         Transform transform = __0.transform;
         if (__1)
@@ -47,6 +51,8 @@ public static class Patches
         return false;
     }
 
+    // We don't use these managers and they log a bunch of errors, so we disable them
+    
     private static readonly string[] ManagersToRemove =
     {
         "OrbManager",
