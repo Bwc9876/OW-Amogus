@@ -53,8 +53,8 @@ public static class LanternCreator
 
     public static GameObject GetLantern(GameObject sourceLantern, Transform transform, Sector parentSector)
     {
-        // TODO: Uh the conceal cover things don't work
-        sourceLantern.GetComponent<DreamLanternController>().enabled = true;
+        DreamLanternController sourceController = sourceLantern.GetComponent<DreamLanternController>();
+        sourceController.enabled = true;
         sourceLantern.GetComponent<DreamLanternItem>().enabled = true;
         GameObject newLanternGO = GameObject.Instantiate(sourceLantern, transform.parent);
         newLanternGO.transform.localPosition = transform.localPosition;
@@ -63,7 +63,9 @@ public static class LanternCreator
         DreamLanternItem dreamLanternItem = newLanternGO.GetComponent<DreamLanternItem>();
         dreamLanternItem.SetSector(parentSector);
         DreamLanternController dreamLanternController = newLanternGO.GetComponent<DreamLanternController>();
-        dreamLanternController._focuserPetalsBaseEulerAngles = sourceLantern.GetComponent<DreamLanternController>()._focuserPetalsBaseEulerAngles;
+        dreamLanternController._focuserPetalsBaseEulerAngles = sourceController._focuserPetalsBaseEulerAngles;
+        dreamLanternController._concealerRootsBaseScale = sourceController._concealerRootsBaseScale;
+        dreamLanternController._concealerCoversStartPos = sourceController._concealerCoversStartPos;
         return newLanternGO;
     }
 }
