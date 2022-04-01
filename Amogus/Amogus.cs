@@ -6,6 +6,7 @@ namespace Amogus;
 public class Amogus : ModBehaviour
 {
     public static Amogus Instance;
+    
 
     private void Awake()
     {

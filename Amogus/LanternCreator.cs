@@ -1,6 +1,5 @@
 ﻿using Amogus.Components;
 using Amogus.Utilities;
-using OWML.Utils;
 using QSB.Utility;
 using UnityEngine;
 
@@ -56,7 +55,7 @@ public static class LanternCreator
         DreamLanternController sourceController = sourceLantern.GetComponent<DreamLanternController>();
         sourceController.enabled = true;
         sourceLantern.GetComponent<DreamLanternItem>().enabled = true;
-        GameObject newLanternGO = GameObject.Instantiate(sourceLantern, transform.parent);
+        GameObject newLanternGO = Object.Instantiate(sourceLantern, transform.parent);
         newLanternGO.transform.localPosition = transform.localPosition;
         newLanternGO.transform.localRotation = transform.localRotation;
         newLanternGO.transform.SetGlobalScale(Vector3.one);

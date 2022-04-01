@@ -71,6 +71,7 @@ public static class Patches
     public static void OnQSBWorldSyncBuildWorldObjects()
     {
         Amogus.Instance.ModHelper.Console.WriteLine("Checking for Lanterns...");
+        DreamFireHandler.SetupCampfires();
         LanternCreator.SpawnAllLanterns(GameObject.Find("Lobby_Body/Sector").GetComponent<Sector>());
         List<WorldObjectManager> managers = QSBWorldSync.Managers.ToList();
         managers.RemoveAll(m => ManagersToRemove.Contains(m.ToString()));
